@@ -1,0 +1,153 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const products = [
+  {
+    id: 1,
+    name: 'Stoneware Mug – Ash Glaze',
+    price: 48,
+    category: 'Ceramics',
+    emoji: '🏺',
+    description: 'Wheel-thrown, food-safe, dishwasher safe. Each piece is unique due to the natural ash glaze process.',
+    badge: 'Best Seller',
+  },
+  {
+    id: 2,
+    name: 'Stoneware Bowl – Celadon',
+    price: 55,
+    category: 'Ceramics',
+    emoji: '🍲',
+    description: 'Hand-built pinch bowl with a soft celadon glaze. Perfect for morning granola or a side of olives.',
+    badge: null,
+  },
+  {
+    id: 3,
+    name: 'Ceramic Bud Vase',
+    price: 36,
+    category: 'Ceramics',
+    emoji: '🌸',
+    description: 'A small, elegant vase for a single stem. Slab-built with a matte white glaze.',
+    badge: 'New',
+  },
+  {
+    id: 4,
+    name: 'Linen Tote Bag',
+    price: 32,
+    category: 'Textiles',
+    emoji: '👜',
+    description: 'Natural linen, hand-stitched seams, block-printed geometric design. Holds a week of groceries easily.',
+    badge: null,
+  },
+  {
+    id: 5,
+    name: 'Indigo Dyed Scarf',
+    price: 68,
+    category: 'Textiles',
+    emoji: '🧣',
+    description: 'Hand-dyed with natural indigo using a resist-dye technique. No two are the same.',
+    badge: 'Limited',
+  },
+  {
+    id: 6,
+    name: 'Field Notes Zine Vol. 1',
+    price: 14,
+    category: 'Print',
+    emoji: '📖',
+    description: '24-page riso-printed zine on craft, process, and place. Full colour, saddle-stitched.',
+    badge: null,
+  },
+  {
+    id: 7,
+    name: 'Field Notes Zine Vol. 2',
+    price: 14,
+    category: 'Print',
+    emoji: '📗',
+    description: 'Second issue exploring slow living and the tools that shape us.',
+    badge: 'New',
+  },
+  {
+    id: 8,
+    name: 'Art Print – "Still Morning"',
+    price: 40,
+    category: 'Print',
+    emoji: '🖼️',
+    description: 'A4 giclée print on 270gsm cotton rag paper. Signed and numbered, edition of 50.',
+    badge: 'Limited',
+  },
+];
+
+const categories = ['All', 'Ceramics', 'Textiles', 'Print'];
+---
+
+<Layout title="Shop" description="Browse handmade ceramics, textiles, and prints.">
+  <!-- Hero -->
+  <section class="bg-white border-b border-stone-100 py-16">
+    <div class="max-w-5xl mx-auto px-6 text-center">
+      <p class="text-amber-600 text-sm font-semibold uppercase tracking-widest mb-3">Small batch, made with care</p>
+      <h1 class="text-4xl md:text-5xl font-bold text-stone-900 mb-4">The Shop</h1>
+      <p class="text-stone-500 max-w-lg mx-auto">
+        Everything here is made by hand in small runs. When something sells out, it may not come back — or it might come back slightly different.
+      </p>
+    </div>
+  </section>
+
+  <!-- Filter tabs -->
+  <section class="bg-white sticky top-[65px] z-40 border-b border-stone-100">
+    <div class="max-w-5xl mx-auto px-6 py-3 flex gap-2 overflow-x-auto">
+      {categories.map(cat => (
+        <button
+          class={`px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-colors
+            ${cat === 'All'
+              ? 'bg-amber-500 text-white'
+              : 'bg-stone-100 text-stone-600 hover:bg-stone-200'
+            }`}
+        >
+          {cat}
+        </button>
+      ))}
+    </div>
+  </section>
+
+  <!-- Products grid -->
+  <section class="max-w-5xl mx-auto px-6 py-16">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+      {products.map(product => (
+        <div class="group bg-white rounded-2xl border border-stone-100 overflow-hidden hover:shadow-lg transition-shadow flex flex-col">
+          <div class="relative bg-stone-50 h-48 flex items-center justify-center text-6xl">
+            {product.emoji}
+            {product.badge && (
+              <span class={`absolute top-3 right-3 text-xs font-bold px-2 py-1 rounded-full
+                ${product.badge === 'New' ? 'bg-emerald-100 text-emerald-700' :
+                  product.badge === 'Limited' ? 'bg-rose-100 text-rose-700' :
+                  'bg-amber-100 text-amber-700'}`}>
+                {product.badge}
+              </span>
+            )}
+          </div>
+          <div class="p-5 flex flex-col flex-1">
+            <span class="text-xs font-semibold text-amber-600 uppercase tracking-widest">{product.category}</span>
+            <h3 class="font-semibold text-stone-900 mt-1 mb-2 leading-snug">{product.name}</h3>
+            <p class="text-sm text-stone-500 mb-4 leading-relaxed flex-1">{product.description}</p>
+            <div class="flex items-center justify-between mt-auto">
+              <span class="text-lg font-bold text-stone-900">${product.price}</span>
+              <button class="bg-amber-500 hover:bg-amber-600 text-white text-sm font-semibold px-4 py-2 rounded-full transition-colors">
+                Add to cart
+              </button>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Custom order CTA -->
+  <section class="bg-amber-50 py-16">
+    <div class="max-w-2xl mx-auto px-6 text-center">
+      <h2 class="text-2xl font-bold text-stone-900 mb-3">Looking for something custom?</h2>
+      <p class="text-stone-500 mb-6">I take on a limited number of custom commissions each season. Reach out to discuss what you have in mind.</p>
+      <a href="mailto:hello@sukriti.com" class="inline-block bg-stone-900 hover:bg-stone-700 text-white font-semibold px-8 py-3 rounded-full transition-colors">
+        Get in touch
+      </a>
+    </div>
+  </section>
+</Layout>

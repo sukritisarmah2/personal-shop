@@ -1,0 +1,134 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+export async function getStaticPaths() {
+  const posts = [
+    {
+      slug: 'getting-started-with-ceramics',
+      title: 'Getting Started with Ceramics',
+      date: 'March 28, 2026',
+      tag: 'Craft',
+      readTime: '6 min read',
+      content: `
+        <p>I came to ceramics late — or at least later than I thought I would. I'd been meaning to take a class for years, telling myself I'd get around to it after the next project, the next season, the next big thing. Then one January I just booked it, paid for eight Saturdays of beginner throwing, and showed up.</p>
+
+        <p>What I didn't expect was how completely it would rewire my sense of time. Clay does not hurry. You can't rush a drying piece or push a firing schedule without consequence. For someone who lives and works mostly in the digital world, this was a revelation.</p>
+
+        <h2>The tools that matter</h2>
+        <p>You don't need much to start. A wire cutter, a wooden rib, a sponge, a couple of loop tools. Your hands do most of the work. The real investment is time — and clay, which is honestly very cheap.</p>
+
+        <p>I started on a shared community wheel. Six months in I bought a second-hand Shimpo Aspire, which lives in a corner of my studio and is the most-used thing I own.</p>
+
+        <h2>The first firing</h2>
+        <p>Nothing prepares you for opening a kiln. Everything you put in comes out transformed — sometimes more beautiful, sometimes cracked, sometimes both. My first proper firing gave me two mugs I still use and a bowl that warped into something useless but somehow wonderful. I kept that too.</p>
+
+        <p>The unpredictability is the point. You're collaborating with fire and physics, not controlling them.</p>
+      `,
+    },
+    {
+      slug: 'design-principles-i-live-by',
+      title: 'Design Principles I Live By',
+      date: 'March 12, 2026',
+      tag: 'Design',
+      readTime: '4 min read',
+      content: `
+        <p>These aren't rules. They're more like recurring observations — things I notice myself returning to whenever a project goes sideways or a piece isn't working.</p>
+
+        <h2>Simplicity is a direction, not a destination</h2>
+        <p>You don't arrive at simple. You move toward it, and the movement itself is the practice. Every decision that removes friction, clarifies purpose, or strips away decoration in service of the thing itself — that's the work.</p>
+
+        <h2>Imperfection is information</h2>
+        <p>The crack in the glaze, the slightly uneven rim, the place where a stitch pulls: these aren't failures, they're data. They tell you something about the material, the process, yourself. Learn to read them before you try to eliminate them.</p>
+
+        <h2>Make for one person</h2>
+        <p>When I'm making something, I try to picture a specific person holding it, using it, living with it. Not a demographic. A person. It makes every decision easier and every piece more honest.</p>
+      `,
+    },
+    {
+      slug: 'small-batch-production',
+      title: 'Why I Switched to Small Batch',
+      date: 'February 20, 2026',
+      tag: 'Business',
+      readTime: '5 min read',
+      content: `
+        <p>For two years I tried to scale. I took wholesale accounts, I standardised my processes, I batch-produced mugs in runs of fifty. The work got faster and the margins got better and I was profoundly miserable.</p>
+
+        <p>The problem wasn't the economics. The problem was that what I was making stopped feeling like mine.</p>
+
+        <h2>What small batch actually means</h2>
+        <p>For me it means runs of six to twelve pieces maximum. It means each piece gets individual attention. It means some glazes only appear once, when a batch comes out a colour I didn't plan for and won't be able to replicate.</p>
+
+        <p>It also means higher prices, which took me a long time to be okay with. But people who want what I actually make — not a cheaper version of it — find their way to the shop.</p>
+
+        <h2>The unexpected benefit</h2>
+        <p>I make better work now. Not because I'm more skilled (though I am), but because I care again. You can't fake care at scale, and you don't have to fake it at the pace I'm working at.</p>
+      `,
+    },
+    {
+      slug: 'natural-dyeing-basics',
+      title: 'Natural Dyeing: A Beginner\'s Guide',
+      date: 'February 5, 2026',
+      tag: 'Craft',
+      readTime: '8 min read',
+      content: `<p>Natural dyeing is one of those crafts that looks intimidating from the outside and turns out to be mostly just cooking — cooking that produces colour instead of dinner.</p><p>The basics are: plant material, water, heat, fibre, and a mordant to make the colour stick. Everything else is variation on that theme.</p>`,
+    },
+    {
+      slug: 'on-selling-creative-work',
+      title: 'On Selling Creative Work (Without Losing Your Soul)',
+      date: 'January 18, 2026',
+      tag: 'Business',
+      readTime: '7 min read',
+      content: `<p>The hardest part of selling things I make isn't pricing, or marketing, or finding the right platform. It's the moment a stranger holds something I made and decides whether it's worth what I'm asking. That moment is strange and vulnerable every single time.</p>`,
+    },
+    {
+      slug: 'slow-studio-practice',
+      title: 'Building a Slow Studio Practice',
+      date: 'January 3, 2026',
+      tag: 'Process',
+      readTime: '5 min read',
+      content: `<p>I spent most of last year trying to work faster. I bought a bigger kiln, rearranged my studio for efficiency, and set output targets. I hit most of them. I also felt increasingly disconnected from why I started making things in the first place.</p>`,
+    },
+  ];
+
+  return posts.map(post => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+---
+
+<Layout title={post.title} description={post.excerpt}>
+  <article class="max-w-2xl mx-auto px-6 py-16">
+    <!-- Back -->
+    <a href="/blog" class="inline-flex items-center gap-2 text-stone-500 hover:text-amber-600 text-sm font-medium mb-10 transition-colors">
+      ← All posts
+    </a>
+
+    <!-- Header -->
+    <header class="mb-10">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="bg-amber-100 text-amber-700 text-xs font-semibold px-3 py-1 rounded-full">{post.tag}</span>
+        <span class="text-stone-400 text-sm">{post.readTime}</span>
+      </div>
+      <h1 class="text-4xl font-bold text-stone-900 leading-tight mb-4">{post.title}</h1>
+      <p class="text-stone-400 text-sm">{post.date}</p>
+    </header>
+
+    <!-- Content -->
+    <div
+      class="prose prose-stone prose-lg max-w-none
+        prose-headings:font-bold prose-headings:text-stone-900
+        prose-p:text-stone-600 prose-p:leading-relaxed
+        prose-h2:text-xl prose-h2:mt-10 prose-h2:mb-4"
+      set:html={post.content}
+    />
+
+    <!-- Footer -->
+    <div class="mt-16 pt-10 border-t border-stone-100 flex items-center justify-between">
+      <a href="/blog" class="text-stone-500 hover:text-amber-600 text-sm font-medium transition-colors">← Back to blog</a>
+      <a href="/shop" class="bg-amber-500 hover:bg-amber-600 text-white text-sm font-semibold px-5 py-2 rounded-full transition-colors">Visit the shop</a>
+    </div>
+  </article>
+</Layout>

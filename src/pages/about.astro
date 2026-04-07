@@ -1,0 +1,93 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="About" description="About Sukriti — maker, writer, designer.">
+  <!-- Hero -->
+  <section class="max-w-5xl mx-auto px-6 py-20 grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+    <div>
+      <p class="text-amber-600 text-sm font-semibold uppercase tracking-widest mb-4">Hello there</p>
+      <h1 class="text-4xl md:text-5xl font-bold text-stone-900 mb-6 leading-tight">
+        I'm Sukriti.<br />I make things.
+      </h1>
+      <p class="text-stone-500 text-lg leading-relaxed mb-4">
+        Ceramics, textiles, prints, and occasionally words. I work from a small studio and sell my work in small batches — everything you see in the shop is made by my hands.
+      </p>
+      <p class="text-stone-500 leading-relaxed mb-8">
+        Before I was a maker I worked in design and technology, which is probably why I'm obsessed with the intersection of craft and intention. I believe the objects we live with shape us, and that how they're made matters as much as what they are.
+      </p>
+      <a href="/shop" class="inline-block bg-amber-500 hover:bg-amber-600 text-white font-semibold px-8 py-3 rounded-full transition-colors">
+        Shop my work
+      </a>
+    </div>
+    <div class="space-y-4">
+      <div class="bg-stone-200 rounded-3xl h-72 flex items-center justify-center text-8xl">
+        🧑‍🎨
+      </div>
+      <div class="grid grid-cols-2 gap-4">
+        <div class="bg-amber-50 rounded-2xl p-5 text-center">
+          <p class="text-3xl font-bold text-amber-600">4+</p>
+          <p class="text-stone-500 text-sm mt-1">Years making</p>
+        </div>
+        <div class="bg-stone-100 rounded-2xl p-5 text-center">
+          <p class="text-3xl font-bold text-stone-700">200+</p>
+          <p class="text-stone-500 text-sm mt-1">Pieces sold</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Values -->
+  <section class="bg-white py-20">
+    <div class="max-w-5xl mx-auto px-6">
+      <h2 class="text-2xl font-bold text-stone-900 mb-10 text-center">How I work</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {[
+          { icon: '🤲', title: 'Made by hand', body: 'Everything is made by me, personally, in my studio. No outsourcing, no automation beyond the kiln.' },
+          { icon: '🌿', title: 'Low impact', body: 'I source materials responsibly — local clays, natural dyes, recycled fibres where possible. Packaging is plastic-free.' },
+          { icon: '📦', title: 'Small batches', body: 'I run small editions intentionally. When something is gone, it\'s gone. This keeps the work honest.' },
+        ].map(item => (
+          <div class="text-center">
+            <div class="text-4xl mb-4">{item.icon}</div>
+            <h3 class="font-bold text-stone-900 mb-2">{item.title}</h3>
+            <p class="text-stone-500 text-sm leading-relaxed">{item.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Timeline -->
+  <section class="max-w-3xl mx-auto px-6 py-20">
+    <h2 class="text-2xl font-bold text-stone-900 mb-10">A short history</h2>
+    <div class="space-y-8 relative before:absolute before:left-4 before:top-2 before:bottom-2 before:w-px before:bg-stone-200">
+      {[
+        { year: '2022', title: 'First ceramics class', body: 'Eight Saturdays that changed everything. I was terrible and completely hooked.' },
+        { year: '2023', title: 'Studio of my own', body: 'Moved into a shared studio space. Got a second-hand wheel. Started taking it seriously.' },
+        { year: '2024', title: 'Expanded into textiles', body: 'Natural dyeing, weaving, and eventually the linen goods now in the shop.' },
+        { year: '2025', title: 'Launched this shop', body: 'Started selling online. First collection sold out in a week. Still surprises me.' },
+        { year: '2026', title: 'New prints series', body: 'Working on a new run of giclée prints and the third volume of the zine.' },
+      ].map(item => (
+        <div class="pl-12 relative">
+          <div class="absolute left-0 top-1 w-8 h-8 bg-amber-500 rounded-full flex items-center justify-center text-white text-xs font-bold">
+            ✓
+          </div>
+          <p class="text-amber-600 text-sm font-semibold mb-1">{item.year}</p>
+          <h3 class="font-bold text-stone-900 mb-1">{item.title}</h3>
+          <p class="text-stone-500 text-sm">{item.body}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="bg-stone-900 py-16">
+    <div class="max-w-2xl mx-auto px-6 text-center">
+      <h2 class="text-2xl font-bold text-white mb-3">Want to work together?</h2>
+      <p class="text-stone-400 mb-6">I'm open to commissions, collaborations, and the occasional conversation about clay.</p>
+      <a href="mailto:hello@sukriti.com" class="inline-block bg-amber-500 hover:bg-amber-600 text-white font-semibold px-8 py-3 rounded-full transition-colors">
+        Say hello
+      </a>
+    </div>
+  </section>
+</Layout>
